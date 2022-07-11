@@ -33,8 +33,14 @@ I'm using this utility to test around `postDelayed` construct inside the `Sample
 Clone the project and run `./gradlew :app:testDebugUnitTest --info`. 
 Or after cloning, open the project in AndroidStudio and search for `SampleViewTest` class and run the test. 
 
-# StackTrace
+# Expected Result
 
+`ShadowLooper.runUiThreadTasksIncludingDelayedTasks()` should wait for the postDelayed construct to finish execution before running the next step in the test. 
+The test should run successfully on Apple M1 Macbook just like it's working fine on an intel chip macbook. 
+
+# Observed Result/Outcome
+
+Test fails on Apple M1 device(passes on intel chip) 
 ```
 
 com.example.roboapplechiperror.SampleViewTest > testView FAILED
